@@ -63,9 +63,9 @@ snippet rcc
 	var ${1:ClassName} = React.createClass({
 		mixins: [PureRenderMixin],
 		render() {
-			var { className, children = [] } = this.props;
+			var { className = '', children = [] } = this.props;
 			return (
-				<div className={\`${2} \${className || ''}\`}>
+				<div className={\`${2} \${className}\`}>
 					${3}
 					{children}
 				</div>
@@ -101,6 +101,6 @@ snippet scu
 		${1}
 	},
 snippet dprops
-	var { className, children } = this.props;
+	var { className = '', children = [] } = this.props;
 snippet dstate
 	var { ${1} } = this.state;
