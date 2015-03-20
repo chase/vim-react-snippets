@@ -84,6 +84,10 @@ propTypes: {
 },
 endsnippet
 
+snippet rci "import class/component" b
+import ${1} from '$1';
+endsnippet
+
 snippet rcc "create class/component" b
 ${1:import React from 'react';
 import { PureRenderMixin } from 'react/addons';}
@@ -95,15 +99,15 @@ var ${3:ClassName} = React.createClass({
 	render() {
 		var { className, children } = this.props;
 		return (
-			<div className={\`\${className || ''}\`}>
-				${VISUAL}$4
+			<div className={\`${4} \${className || ''}\`}>
+				${VISUAL}${5}
 				{children}
 			</div>
 		);
 	}
 });$0
 
-${5:export default $3;}
+${6:export default $3;}
 endsnippet
 
 snippet rccc "create class/component container" b
