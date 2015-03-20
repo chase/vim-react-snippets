@@ -7,37 +7,37 @@ var cx = React.addons.classSet;
 endsnippet
 
 snippet cdm "component did mount" b
-componentDidMount: function() {
+componentDidMount() {
 	${1}
 },$0
 endsnippet
 
 snippet cdup "component did update" b
-componentDidUpdate: function(prevProps, prevState) {
+componentDidUpdate(prevProps, prevState) {
 	${1}
 },$0
 endsnippet
 
 snippet cwm "component will mount" b
-componentWillMount: function() {
+componentWillMount() {
 	${1}
 },$0
 endsnippet
 
 snippet cwr "component will receive props" b
-componentWillReceiveProps: function(nextProps) {
+componentWillReceiveProps(nextProps) {
 	${1}
 },$0
 endsnippet
 
 snippet cwun "component will unmount" b
-componentWillUnmount: function() {
+componentWillUnmount() {
 	${1}
 },$0
 endsnippet
 
 snippet cwu "component will update" b
-componentWillUpdate: function(nextProps, nextState) {
+componentWillUpdate(nextProps, nextState) {
 	${1}
 },$0
 endsnippet
@@ -53,15 +53,15 @@ forceUpdate(${1:callback});
 endsnippet
 
 snippet gdp "get default props" b
-getDefaultProps: function() {
+getDefaultProps() {
 	return {
-		${1}
+		${1}: ${2}
 	};
 },$0
 endsnippet
 
 snippet gis "get initial state" b
-getInitialState: function() {
+getInitialState() {
 	return {
 		${1}: ${2}
 	};
@@ -80,32 +80,42 @@ endsnippet
 
 snippet pt "propTypes" b
 propTypes: {
-	${1}: React.PropTypes.${2:string}
+	${1}: PropTypes.${2:string}
 },
 endsnippet
 
 snippet rcc "create class/component" b
-${1:/**
-* @jsx React.DOM
-*/
+${1:import React from 'react';
+import { PureRenderMixin } from 'react/addons';}
 
-var React = require('react');
-}
+${2:var { PropTypes } = React;}
+
+var ${3:ClassName} = React.createClass({
+	render() {
+		return (
+			${VISUAL}$4
+		);
+	}
+});$0
+
+${5:export default $3;}
+endsnippet
+
+snippet rccc "create class/component container" b
+${1:import Recat from 'react';
+import { PureRenderMixin } from 'react/addons';}
+
 var ${2:ClassName} = React.createClass({
+	render() {
+		return <${VISUAL}$3 {...this.state}/>;
+	}
+});$0
 
-render: function() {
-	return (
-		${VISUAL}$4
-	);
-}
-
-});
-$0
-${3:module.exports = $2;}
+${4:export default $2;}
 endsnippet
 
 snippet ren
-render: function() {
+render() {
 	return (
 		${1:<div />}
 	);
@@ -119,19 +129,15 @@ this.setState({
 endsnippet
 
 snippet scu "should component update"
-shouldComponentUpdate: function(nextProps, nextState) {
+shouldComponentUpdate(nextProps, nextState) {
 	${1}
 },$0
 endsnippet
 
-snippet props "get property" i
-this.props.${1}
+snippet dprops "get property" i
+var { className, children } = this.props;
 endsnippet
 
-snippet state "get state" i
-this.state.${1}
-endsnippet
-
-snippet trp
-this.transferPropsTo(${VISUAL}$0);
+snippet dstate "get state" i
+var { ${1} } = this.state;
 endsnippet

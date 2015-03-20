@@ -1,7 +1,7 @@
 vim-react-snippets
 ==================
 
-A set of snippets for Vim to work with Facebook's [React](http://facebook.github.io/react/) library.
+A set of snippets for Vim to work with Facebook's [React](http://facebook.github.io/react/) library in ES6.
 
 A direct port of the awesome snippets from 
 [jgebhardt/sublime-react](https://github.com/jgebhardt/sublime-react).
@@ -20,15 +20,15 @@ add the following to your `.vimrc` (taken from the [SnipMate README](https://git
 
 ```
 " vim-react-snippets:
-Bundle "justinj/vim-react-snippets"
+Plugin "caasi/vim-react-snippets"
 
 " SnipMate and its dependencies:
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
+Plugin "MarcWeber/vim-addon-mw-utils"
+Plugin "tomtom/tlib_vim"
+Plugin "garbas/vim-snipmate"
 
 " Other sets of snippets (optional):
-Bundle "honza/vim-snippets"
+Plugin "honza/vim-snippets"
 ```
 
 Usage
