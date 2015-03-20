@@ -93,8 +93,12 @@ ${2:var { PropTypes } = React;}
 var ${3:ClassName} = React.createClass({
 	mixins: [PureRenderMixin],
 	render() {
+		var { className, children } = this.props;
 		return (
-			${VISUAL}$4
+			<div className={\`\${className || ''}\`}>
+				${VISUAL}$4
+				{children}
+			</div>
 		);
 	}
 });$0
