@@ -91,6 +91,7 @@ import { PureRenderMixin } from 'react/addons';}
 ${2:var { PropTypes } = React;}
 
 var ${3:ClassName} = React.createClass({
+	mixins: [PureRenderMixin],
 	render() {
 		return (
 			${VISUAL}$4
@@ -106,6 +107,7 @@ ${1:import Recat from 'react';
 import { PureRenderMixin } from 'react/addons';}
 
 var ${2:ClassName} = React.createClass({
+	mixins: [PureRenderMixin],
 	render() {
 		return <${VISUAL}$3 {...this.state}/>;
 	}

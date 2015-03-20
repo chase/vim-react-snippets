@@ -59,6 +59,7 @@ snippet rcc
 	var { PropTypes } = React;
 
 	var ${1:ClassName} = React.createClass({
+		mixins: [PrueRenderMixin],
 		render() {
 			return (
 				${0:<div />}
