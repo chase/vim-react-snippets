@@ -52,8 +52,8 @@ snippet pt
 	propTypes: {
 		${1}: PropTypes.${2:string}
 	},
-snippet rci
-	import ${1:ClassName} from '$1';
+snippet rci 
+	import ${1:ClassName} from './$1';
 snippet rcc
 	import React from 'react';
 	import { PureRenderMixin } from 'react/addons';
@@ -63,7 +63,7 @@ snippet rcc
 	var ${1:ClassName} = React.createClass({
 		mixins: [PureRenderMixin],
 		render() {
-			var { className, children } = this.props;
+			var { className, children = [] } = this.props;
 			return (
 				<div className={\`${2} \${className || ''}\`}>
 					${3}

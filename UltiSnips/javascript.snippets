@@ -85,7 +85,7 @@ propTypes: {
 endsnippet
 
 snippet rci "import class/component" b
-import ${1} from '$1';
+import ${1} from './$1';
 endsnippet
 
 snippet rcc "create class/component" b
@@ -94,10 +94,10 @@ import { PureRenderMixin } from 'react/addons';}
 
 ${2:var { PropTypes } = React;}
 
-var ${3:ClassName} = React.createClass({
+var ${3:ClassName} =  React.createClass({
 	mixins: [PureRenderMixin],
 	render() {
-		var { className, children } = this.props;
+		var { className, children = [] } = this.props;
 		return (
 			<div className={\`${4} \${className || ''}\`}>
 				${VISUAL}${5}
