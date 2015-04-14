@@ -52,7 +52,7 @@ snippet pt
 	propTypes: {
 		${1}: PropTypes.${2:string}
 	},
-snippet rci 
+snippet rci
 	import ${1:ClassName} from './$1';
 snippet rcc
 	import React from 'react';
@@ -74,6 +74,7 @@ snippet rcc
 	});
 
 	export default $1;
+
 snippet rccc
 	import React from 'react';
 	import { PureRenderMixin } from 'react/addons';
@@ -81,11 +82,12 @@ snippet rccc
 	var ${1:ClassName} = React.createClass({
 		mixins: [PureRenderMixin],
 		render() {
-			return <div {...this.state}/>;
+			return <div {...this.state} />;
 		}
 	});
 
 	export default $1;
+
 snippet ren
 	render() {
 		return (
