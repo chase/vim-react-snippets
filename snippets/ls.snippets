@@ -31,9 +31,9 @@ snippet rcc
 		'react/addons': { { PureRenderMixin, classSet:cx }:addons }
 	}
 
-	class ${1:ClassName} extends Components implements PureRenderMixin
+	class ${1:ClassName} extends Component implements PureRenderMixin
 		(@props) ->
-		render: ->
+		render: ~>
 			{ className = '', children = [] } = @props
 			div do
 				className: "${2} #className"
@@ -48,9 +48,9 @@ snippet rccc
 		'react/addons': { { PureRenderMixin, classSet:cx }:addons }
 	}
 
-	class ${1:ClassName} extends Components implements PureRenderMixin
+	class ${1:ClassName} extends Component implements PureRenderMixin
 		->
-		render: -> div @state
+		render: ~> div @state
 
 	module.exports = $1
 
