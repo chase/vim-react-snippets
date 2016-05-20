@@ -151,3 +151,34 @@ endsnippet
 snippet dstate "get state" i
 var { ${1} } = this.state;
 endsnippet
+
+# Redux Synchronous Action Type
+snippet rdxst
+export const ${1:ACTION} = '$1'
+endsnippet
+
+# Redux Asynchronous Action Type
+snippet rdxat
+export const ${1:ACTION}_REQUEST = '$1_REQUEST'
+export const $1_SUCCESS = '$1_SUCCESS'
+export const $1_FAILURE = '$1_FAILURE'
+endsnippet
+
+snippet rdxsa "Redux synchoronous thunk action" b
+export function ${1:action}(data) {
+	return d => Promise.resolve(d({ type: ${2:ACTION}, data }))
+}$0
+endsnippet
+
+snippet rdxaa "Redux asynchronous thunk action" b
+export function ${1:action}(data) {
+	return dispatch => {
+		dispatch({ type: ${2:ACTION}_REQUEST })
+		let promise = ${3:request}
+		promise
+			.then({ type: $2_SUCCESS })
+			.catch({ type: $2_FAILURE })
+		return promise
+	}
+}$0
+endsnippet
