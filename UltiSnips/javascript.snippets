@@ -176,8 +176,8 @@ export function ${1:action}(data) {
 		dispatch({ type: ${2:ACTION}_REQUEST })
 		let promise = ${3:request}
 		promise
-			.then({ type: $2_SUCCESS })
-			.catch({ type: $2_FAILURE })
+			.then(data => dispatch({ type: $2_SUCCESS, data }))
+			.catch(error => dispatch({ type: $2_FAILURE, error }))
 		return promise
 	}
 }$0
