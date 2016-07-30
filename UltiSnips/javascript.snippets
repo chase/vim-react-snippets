@@ -2,8 +2,27 @@
 #  React snippets
 #
 
-snippet cs "React.addons.classSet" b
-var cx = React.addons.classSet;
+snippet log
+console.log(${0});
+endsnippet
+
+snippet c
+const ${1} = ${0};
+endsnippet
+
+snippet l
+let ${1} = ${0};
+endsnippet
+
+snippet exp
+export default ${1}
+endsnippet
+
+snippet con
+constructor(props) {
+	super(props);
+	${0}
+}
 endsnippet
 
 snippet cdm "component did mount" b
@@ -42,12 +61,6 @@ componentWillUpdate(nextProps, nextState) {
 },$0
 endsnippet
 
-snippet cx
-cx({
-	${1}: ${2}
-});
-endsnippet
-
 snippet fup
 forceUpdate(${1:callback});
 endsnippet
@@ -72,62 +85,54 @@ snippet ism "is mounted"
 isMounted()
 endsnippet
 
-snippet jsx "define jsx dom" b
-/**
- * @jsx React.DOM
- */
-endsnippet
-
 snippet pt "propTypes" b
 propTypes: {
 	${1}: PropTypes.${2:string}
 },
 endsnippet
+snippet pts
+PropTypes.string
+endsnippet
+snippet ptn
+PropTypes.number
+endsnippet
+snippet pta
+PropTypes.array
+endsnippet
+snippet pto
+PropTypes.object
+endsnippet
+snippet pte
+PropTypes.element
+endsnippet
+snippet ptb
+PropTypes.bool
+endsnippet
+snippet ptf
+PropTypes.func
+endsnippet
+snippet ptc
+PropTypes.children = PropTypes.oneOfType([
+	PropTypes.node,
+	PropTypes.arrayOf(PropTypes.node),
+]);
+endsnippet
 
-snippet rci "import class/component" b
+snippet imp
+	import ${1} from ${2};
+endsnippet
+snippet impc
+	import {${1}} from ${2};
+endsnippet
+
+snippet rimp "relative import" b
 import ${1} from './$1';
-endsnippet
-
-snippet rcc "create class/component" b
-${1:import React from 'react';
-import { PureRenderMixin } from 'react/addons';}
-
-${2:var { PropTypes } = React;}
-
-var ${3:ClassName} =  React.createClass({
-	mixins: [PureRenderMixin],
-	render() {
-		var { className, children = [] } = this.props;
-		return (
-			<div className={\`${4} \${className || ''}\`}>
-				${VISUAL}${5}
-				{children}
-			</div>
-		);
-	}
-});$0
-
-${6:export default $3;}
-endsnippet
-
-snippet rccc "create class/component container" b
-${1:import Recat from 'react';
-import { PureRenderMixin } from 'react/addons';}
-
-var ${2:ClassName} = React.createClass({
-	mixins: [PureRenderMixin],
-	render() {
-		return <${VISUAL}$3 {...this.state}/>;
-	}
-});$0
-
-${4:export default $2;}
 endsnippet
 
 snippet ren
 render() {
 	return (
-		${1:<div />}
+		${1}
 	);
 }$0
 endsnippet
@@ -181,4 +186,77 @@ export function ${1:action}(data) {
 		return promise
 	}
 }$0
+endsnippet
+
+snippet mstp "mapStateToProps" b
+function mapStateToProps(state) {
+	return {
+		${1}
+	}
+}$0
+endsnippet
+
+snippet mdtp "mapDispatchToProps" b
+function mapDispatchToProps(dispatch) {
+	return {
+		${1}
+	}
+}$0
+endsnippet
+
+snippet comp "Component" b
+import React, {Component, PropTypes} from 'react';
+
+class ${1:ClassName} extends Component {
+	static propTypes = {
+	};
+
+	render() {
+		return (
+			$0
+		);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet comps "Stateless Component" b
+const ${1:ClassName} = (${2:\{\}}) {
+	return (
+		$0
+	)
+}
+
+$1.propTypes = propTypes;
+export default $1;
+endsnippet
+	
+snippet comps "Redux Component" b
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
+class ${1:ClassName} extends Component {
+	static propTypes = {
+	};
+
+	render() {
+		return (
+			$0
+		)
+	}
+}
+
+function mapStateToProps(state) {
+	return {};
+}
+
+export default connect(mapStateToProps, {
+})($1);
+endsnippet
+
+snippet connect "Redux Connect"
+export default connect(mapStateToProps, {
+	$0
+})(${1});
 endsnippet
