@@ -260,3 +260,35 @@ export default connect(mapStateToProps, {
 	$0
 })(${1});
 endsnippet
+
+global !p
+def camelToUpper(name):
+	s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
+	return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).upper()
+def rdxfa(t):
+	return (
+		camelToUpper(t[1]),
+		t[2].rstrip(',') + (', ' if len(t[2]) > 0 else '')
+	)
+endglobal
+
+snippet rdxah "Redux Action Helpers" b
+function createRequestTypes(base) {
+	return [REQUEST, SUCCESS, FAILURE].reduce((act, type) => {
+		act[type] = \`${base}_${type}\`;
+		return act;
+	}, {});
+}
+
+function action(type, payload = {}) {
+	return {type, ...payload};
+}
+endsnippet
+
+snippet rdxfa "Redux Fetch Action" b
+`!p t3, t4 = rdxfa(t)`export const fetch${1:Action} = {
+	request: (${2}) => action(`!p snip.rv = t3`.REQUEST, {$2}),
+	success: (`!p snip.rv = t4`response) => action(`!p snip.rv = t3`.SUCCESS, {`!p snip.rv = t4`response}),
+	failure: (`!p snip.rv = t4`error) => action(`!p snip.rv = t3`.FAILURE, {`!p snip.rv = t4`error}),
+};$0
+endsnippet
